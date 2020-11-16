@@ -1,4 +1,4 @@
-<ul class="list-group">
+<ul class="list-group" *ngIf="loaded && logs?.length > 0">
   <li
     *ngFor="let log of logs"
     [class.list-group-item-secondary]="selectedLog === log"
@@ -9,3 +9,10 @@
     <i (click)="onDelete(log)" class="fa fa-remove"></i>
   </li>
 </ul>
+
+<div *ngIf="loaded && logs.length === 0">
+  <h5>There are no logs in the system</h5>
+</div>
+<div *ngIf="!loaded">
+  <h5>Loading...</h5>
+</div>

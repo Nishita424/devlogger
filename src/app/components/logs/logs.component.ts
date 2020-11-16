@@ -15,7 +15,10 @@ export class LogsComponent implements OnInit {
   constructor(private logService: LogService) {}
 
   ngOnInit(): void {
-    this.logService.getLogs().subscribe((logs) => (this.logs = logs));
+    this.logService.getLogs().subscribe((logs) => {
+      this.logs = logs;
+      this.loaded = true;
+    });
 
     this.logService.stateClear.subscribe((clear) => {
       if (clear) {

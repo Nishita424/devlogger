@@ -5,6 +5,6 @@
   >
     <a href="#" (click)="onSelect(log)">{{ log.text }}</a>
     <span class="log-date">{{ log.date | date: "short" }}</span>
-    <i class="fa fa-remove"></i>
+    <i (click)="onDelete(log)" class="fa fa-remove"></i>
   </li>
 </ul>

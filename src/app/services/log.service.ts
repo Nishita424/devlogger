@@ -17,6 +17,9 @@ export class LogService {
   });
   selectedLog = this.logSource.asObservable();
 
+  private stateSource = new BehaviorSubject<boolean>(true);
+  stateClear = this.stateSource.asObservable();
+
   constructor() {
     this.logs = [
       {
@@ -42,7 +45,13 @@ export class LogService {
   }
 
   setFormLog(log: Log) {
+    // Want to pass "log" from logs to log-form
     this.logSource.next(log);
+  }
+
+  clearState() {
+    // Want to pass "true" from log-form to logs
+    this.stateSource.next(true);
   }
 
   addLog(log: Log) {
